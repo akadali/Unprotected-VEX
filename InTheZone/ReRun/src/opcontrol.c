@@ -70,6 +70,7 @@ void setCache() { //Paste output here for cache
 void updateSensors() { //Update all sensor values
   leftencodervalue = encoderGet(encoderInit(1,2, false));
   rightencodervalue = encoderGet(encoderInit(3,4, false));
+  liftencodervalue = encoderGet(encoderInit(5,6, false));
   printf("left value %d \n", leftencodervalue);
   printf("right value %d \n", rightencodervalue);
 }
@@ -83,6 +84,12 @@ void clawSync(){ //Sync claw
     rightclawpower = 20;
   }
 }
+void lifthold(){
+	if(liftencodervalue < 69)
+	motorSet(6, -127)
+	motorSet(7, -127)
+        }
+}	
 void updateDrive() { //Update robot to joystick control
    //Chasis control
 	 motorSet(2, -joystickGetAnalog(1,2));
